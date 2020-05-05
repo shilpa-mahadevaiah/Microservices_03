@@ -14,7 +14,7 @@ services:
   order-service:
     build: ./Microservices/Order
     depends_on:
-      - database 
+      - mongo3 
       - rabbitmq
     command: ["./wait-for-it.sh", "rabbitmq:5672", "-t", "60", "--", "node", "order_microservice.js"]
   cart-service:
