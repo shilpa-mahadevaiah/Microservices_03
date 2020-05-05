@@ -1,0 +1,26 @@
+{
+  "name": "expressapp",
+  "version": "1.0.0",
+  "description":"This express app",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "seneca": "^3.17.0",
+    "seneca-entity": "^5.2.0",
+    "seneca-mongo-store": "^1.4.1",
+    "seneca-web": "^2.2.1",
+    "seneca-web-adapter-express": "^1.2.0"
+  },
+  "author": "",
+  "license": "ISC"
+  }

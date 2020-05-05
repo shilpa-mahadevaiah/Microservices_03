@@ -1,0 +1,57 @@
+version: '2'
+
+services:
+  server:
+    build: ./Expressapp
+    ports:
+      - "3000:3000"
+  account-service:
+    build: ./Microservices/Account
+    ports:
+      - "9777:9777"
+    depends_on:
+      - mongo1
+  order-service:
+    build: ./Microservices/Order
+    depends_on:
+      - database 
+      - rabbitmq
+    command: ["./wait-for-it.sh", "rabbitmq:5672", "-t", "60", "--", "node", "order_microservice.js"]
+  cart-service:
+    build: ./Microservices/Cart
+    ports:
+      - "9111:9111"
+    depends_on:
+      - mongo2
+      - rabbitmq
+  catalog-service:
+    build: ./Microservices/Catalog  
+    ports:
+      - "9090:9090"
+  mongo1: # Database for Account services
+    container_name: mongo1
+    image: mongo
+    ports:
+     - "27017:27017" # specify port forewarding 
+    volumes:
+      - ./data/db-mongo-1:/data/db 
+
+  mongo2: # Database for Cart services
+    container_name: mongo2
+    image: mongo
+    ports:
+     - "27018:27017" # specify port forewarding  
+    volumes:
+      - ./data/db-mongo-2:/data/db
+  mongo3: # Database for Order services
+    container_name: mongo3
+    image: mongo
+    ports:
+     - "27019:27017" # specify port forewarding  
+    volumes:
+      - ./data/db-mongo-3:/data/db
+  rabbitmq:
+    image: rabbitmq:3
+    ports:
+      - "5672:5672"
+  
