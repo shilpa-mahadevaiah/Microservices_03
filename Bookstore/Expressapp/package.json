@@ -14,7 +14,7 @@
     "morgan": "~1.9.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "seneca": "^3.17.0",
     "seneca-entity": "^5.2.0",
     "seneca-mongo-store": "^1.4.1",
